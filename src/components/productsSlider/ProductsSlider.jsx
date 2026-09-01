@@ -43,7 +43,7 @@ function ProductsSlider({ category, currentProductId }) {
               delay: 2500,
               disableOnInteraction: false,
             }}
-            slidesPerView={5}
+            slidesPerView={1}
             breakpoints={{
               320: {
                 slidesPerView: 1,
