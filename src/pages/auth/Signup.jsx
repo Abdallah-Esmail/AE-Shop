@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { handleApiError } from "../../utils/handleApiError";
 import { handleApiSuccess } from "../../utils/handleApiSuccess";
 import Spinner from "../../components/spinner/Spinner";
+import PageTransition from "../../components/PageTransition";
 function Signup() {
   const { isAuth } = useSelector((state) => state.auth);
   const [signup, { isLoading }] = useSignupMutation();
@@ -41,45 +42,47 @@ function Signup() {
     }
   };
   return (
-    <div className="container form-container">
-      <h1>Signup</h1>
-      <form onSubmit={handleSignup}>
-        <input
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="passwordConfirmation"
-          type="password"
-          placeholder="Confirm Password"
-          value={formData.passwordConfirmation}
-          onChange={handleChange}
-          required
-        />
-        <button className="btn" type="submit" disabled={isLoading}>
-          {isLoading ? <Spinner size={25} /> : "Signup"}
-        </button>
-      </form>
-    </div>
+    <PageTransition>
+      <div className="container form-container">
+        <h1>Signup</h1>
+        <form onSubmit={handleSignup}>
+          <input
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <input
+            name="passwordConfirmation"
+            type="password"
+            placeholder="Confirm Password"
+            value={formData.passwordConfirmation}
+            onChange={handleChange}
+            required
+          />
+          <button className="btn" type="submit" disabled={isLoading}>
+            {isLoading ? <Spinner size={25} /> : "Signup"}
+          </button>
+        </form>
+      </div>
+    </PageTransition>
   );
 }
 

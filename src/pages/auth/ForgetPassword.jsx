@@ -6,6 +6,7 @@ import { useForgetPasswordMutation } from "../../api/authApi";
 import Spinner from "../../components/spinner/Spinner";
 import "./auth.css";
 import { handleApiError } from "../../utils/handleApiError";
+import PageTransition from "../../components/PageTransition";
 function ForgetPassword() {
   const navigate = useNavigate();
   const [forgetPassword, { isLoading, isSuccess }] =
@@ -38,24 +39,26 @@ function ForgetPassword() {
     return;
   }
   return (
-    <div className="container form-container">
-      <h1>Forget Password</h1>
-      <form onSubmit={handleForget}>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleChange}
-        />
-        <button className="btn" type="submit" disabled={isLoading}>
-          {isLoading ? <Spinner size={25} /> : "Send"}
-        </button>
-        <Link to={"/login"}>
-          <button className="btn">Back To Login</button>
-        </Link>
-      </form>
-    </div>
+    <PageTransition>
+      <div className="container form-container">
+        <h1>Forget Password</h1>
+        <form onSubmit={handleForget}>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={handleChange}
+          />
+          <button className="btn" type="submit" disabled={isLoading}>
+            {isLoading ? <Spinner size={25} /> : "Send"}
+          </button>
+          <Link to={"/login"}>
+            <button className="btn">Back To Login</button>
+          </Link>
+        </form>
+      </div>
+    </PageTransition>
   );
 }
 

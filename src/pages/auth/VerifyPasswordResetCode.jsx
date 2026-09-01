@@ -6,6 +6,7 @@ import { useVerifyPasswordResetCodeMutation } from "../../api/authApi";
 import "./auth.css";
 import Spinner from "../../components/spinner/Spinner";
 import { handleApiError } from "../../utils/handleApiError";
+import PageTransition from "../../components/PageTransition";
 function VerifyPasswordResetCode() {
   const navigate = useNavigate();
   const email = sessionStorage.getItem("resetEmail") || null;
@@ -42,24 +43,26 @@ function VerifyPasswordResetCode() {
     }
   };
   return (
-    <div className="container form-container">
-      <h1>Verify Code</h1>
-      <form onSubmit={handleResetCode}>
-        <input
-          name="resetCode"
-          type="text"
-          placeholder="Verification Code"
-          value={resetCode}
-          onChange={handleChange}
-        />
-        <button className="btn" type="submit" disabled={isLoading}>
-          {isLoading ? <Spinner size={25} /> : "Send"}
-        </button>
-        <Link to={"/login"}>
-          <button className="btn">Back To Login</button>
-        </Link>
-      </form>
-    </div>
+    <PageTransition>
+      <div className="container form-container">
+        <h1>Verify Code</h1>
+        <form onSubmit={handleResetCode}>
+          <input
+            name="resetCode"
+            type="text"
+            placeholder="Verification Code"
+            value={resetCode}
+            onChange={handleChange}
+          />
+          <button className="btn" type="submit" disabled={isLoading}>
+            {isLoading ? <Spinner size={25} /> : "Send"}
+          </button>
+          <Link to={"/login"}>
+            <button className="btn">Back To Login</button>
+          </Link>
+        </form>
+      </div>
+    </PageTransition>
   );
 }
 
