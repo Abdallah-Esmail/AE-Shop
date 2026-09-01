@@ -58,7 +58,7 @@ export const cartApi = createApi({
         method: "POST",
         body: { shippingAddress },
       }),
-      invalidatesTags: ["Order", "Cart"],
+      invalidatesTags: ["Cart"],
     }),
 
     checkoutSession: builder.query({

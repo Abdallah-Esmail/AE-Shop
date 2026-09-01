@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/authSlice";
 import { authApi } from "../api/authApi";
 import { authListeners } from "../features/middlewares/authListeners";
+import { orderListeners } from "../features/middlewares/orderListeners";
 import { cartApi } from "../api/cartApi";
 import { orderApi } from "../api/orderApi";
 import { wishlistApi } from "../api/wishlistApi";
@@ -22,7 +23,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .prepend(authListeners.middleware)
+      .prepend(authListeners.middleware, orderListeners.middleware)
       .concat(
         authApi.middleware,
         productsApi.middleware,
