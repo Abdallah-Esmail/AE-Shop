@@ -4,13 +4,15 @@ import {
   useCreateCashOrderMutation,
   useGetMyCartQuery,
 } from "../../api/cartApi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./checkout.css";
 import Authentication from "../../components/errors/Authentication";
 import CheckoutLoading from "./CheckoutLoading";
 import PageTransition from "../../components/PageTransition";
 import { handleApiError } from "../../utils/handleApiError";
+import NoResult from "../../components/errors/NoResult";
+import Spinner from "../../components/spinner/Spinner";
 function Checkout() {
   const governorates = [
     "Cairo",
@@ -54,22 +56,19 @@ function Checkout() {
   } = useGetMyCartQuery(undefined, {
     skip: !isAuth,
   });
-  const [triggerCheckout] = useLazyCheckoutSessionQuery();
-  const [createCashOrder] = useCreateCashOrderMutation();
-  useEffect(() => {
-    if (!isAuth) {
-      <Authentication />;
-    }
-  }, [isAuth, navigate]);
+  const [triggerCheckout, { isCheckoutLoading }] =
+    useLazyCheckoutSessionQuery();
+  const [createCashOrder, { isCashOrderLoading }] =
+    useCreateCashOrderMutation();
   if (!isAuth) {
-    return null;
+    return <Authentication />;
   }
   if (isLoading) {
     return <CheckoutLoading />;
   }
   if (error) {
     handleApiError(error);
-    return;
+    return <NoResult />;
   }
 
   // Event handlers
@@ -127,7 +126,7 @@ function Checkout() {
             <input
               type="text"
               name="phone"
-              id=""
+              id="phone"
               onChange={(e) =>
                 setShippingData({ ...shippingData, phone: e.target.value })
               }
@@ -135,6 +134,7 @@ function Checkout() {
             <label htmlFor="city">City: </label>
             <select
               name="city"
+              id="city"
               defaultValue=""
               onChange={(e) =>
                 setShippingData({ ...shippingData, city: e.target.value })
@@ -154,25 +154,26 @@ function Checkout() {
             <input
               type="text"
               name="details"
-              id=""
+              id="details"
               onChange={(e) =>
                 setShippingData({ ...shippingData, details: e.target.value })
               }
             />
             <h3>Total: {<span>$ {cart?.data?.totalCartPrice}</span>}</h3>
             <button
-              type="submit"
-              className="billing-btn"
+              type="button"
+              disabled={isCheckoutLoading}
               onClick={handleGoToBillingSubmit}
             >
-              Go To Billing
+              {isCheckoutLoading ? <Spinner size={20} /> : "Go To Billing"}
             </button>
+
             <button
-              type="submit"
-              className="billing-btn"
+              type="button"
+              disabled={isCashOrderLoading}
               onClick={handleCreateCashOrderSubmit}
             >
-              Cash Order
+              {isCashOrderLoading ? <Spinner size={20} /> : "Cash Order"}
             </button>
           </form>
         </div>
