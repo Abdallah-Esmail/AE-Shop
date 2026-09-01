@@ -20,7 +20,9 @@ export default function TopHeader() {
     },
   );
   const { data: wishlistData, isLoading: isWishlistLoading } =
-    useGetMyWishlistQuery();
+    useGetMyWishlistQuery(undefined, {
+      skip: !isAuth,
+    });
   const cartCount = isAuth ? (cartData?.data?.cartItems?.length ?? 0) : 0;
   const wishlistCount = isAuth
     ? (wishlistData?.data?.wishlistItems?.length ?? 0)
