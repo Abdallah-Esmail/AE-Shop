@@ -1,0 +1,126 @@
+.item-details {
+  padding: 50px 0;
+}
+.item-details .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-details .item-imgs {
+  width: 40%;
+}
+.item-details .item-imgs .big-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.item-details .item-imgs .big-img img {
+  max-height: 450px;
+  width: auto;
+}
+.item-details .item-imgs .small-img {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.item-details .item-imgs .small-img img {
+  width: 24%;
+}
+@media (max-width: 767px) {
+  .item-details .container {
+    flex-direction: column;
+  }
+  .item-details .item-imgs {
+    margin-bottom: 60px;
+  }
+  .item-details .item-imgs .big-img {
+    margin-bottom: 50px;
+  }
+  .item-details .item-imgs .small-img img {
+    height: 100px;
+    width: auto;
+  }
+}
+.item-details .details {
+  width: 58%;
+}
+.item-details .details h5 {
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+.item-details .details h1.name {
+  margin-bottom: 30px;
+  color: var(--main-color);
+}
+.item-details .stars {
+  margin: 15px 0;
+  display: flex;
+  gap: 5px;
+}
+.item-details .stars svg {
+  fill: #f8d941;
+  font-size: 18px;
+}
+.item-details .details p.price {
+  font-size: 22px;
+  margin: 20px 0;
+}
+.item-details .details p.description {
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.item-details .details .quantity {
+  font-size: 20px;
+  margin-top: 20px;
+}
+.item-details .details .btn {
+  font-size: 16px;
+  border-radius: 2px;
+  padding: 12px 15px;
+}
+.item-details .details .btn svg {
+  font-size: 20px;
+}
+.item-details .details .icons {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+.item-details .details .icons span {
+  width: 40px;
+  height: 40px;
+  background: var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.item-details .details .icons span.active {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+.item-details .details .icons span svg {
+  transition: var(--main-transition);
+}
+.item-details .details .icons span:hover {
+  background-color: var(--main-color);
+}
+.item-details .details .icons span:hover svg {
+  fill: var(--white-color);
+}
+.loading-item .item-details .item-imgs {
+  height: 550px;
+}
+.loading-item .item-details .details {
+  height: 550px;
+  margin-bottom: 50px;
+  padding-top: 100px;
+}
+.loading-item .item-details .details h5 {
+  margin-bottom: 50px;
+  height: 30px;
+}

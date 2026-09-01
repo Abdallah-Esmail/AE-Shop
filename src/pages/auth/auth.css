@@ -1,0 +1,13 @@
+.form-container h1 {
+  text-align: center;
+  margin: 30px auto;
+  color: var(--main-color);
+}
+.form-container form input {
+  display: block;
+  margin: 20px auto;
+}
+.form-container form button,
+.form-container form a {
+  margin: 20px auto 0;
+}

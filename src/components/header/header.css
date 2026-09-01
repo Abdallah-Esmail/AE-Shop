@@ -1,0 +1,187 @@
+:root {
+  --main-color: #0090f0;
+  --p-color: #7b7b7b;
+  --bg-color: #f3f3f3;
+  --white-color: #fff;
+  --heading-color: #253237;
+  --border-color: #d6d6d6d5;
+  --main-transition: 0.3s;
+}
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: var(--white-color);
+}
+.top-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.top-header .logo {
+  width: 160px;
+}
+
+.top-header .search-box {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid var(--main-color);
+}
+
+.top-header .search-box input {
+  height: 45px;
+  width: 440px;
+  background: var(--bg-color);
+  padding: 5px 15px 5px 20px;
+  border-radius: 30px 0 0 30px;
+}
+
+.top-header .search-box button {
+  height: 45px;
+  width: 60px;
+  background: var(--main-color);
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 0 30px 30px 0;
+}
+
+.top-header .search-box button svg {
+  fill: var(--white-color);
+}
+
+.top-header .header-icons {
+  display: flex;
+  gap: 30px;
+}
+
+.top-header .header-icons .icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.top-header .header-icons .icon svg {
+  font-size: 30px;
+}
+
+.top-header .header-icons .icon .count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 11px;
+  border-radius: 100%;
+}
+.bottom-header {
+  background-color: var(--main-color);
+}
+.bottom-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom-header .container nav {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  height: 50px;
+}
+
+.bottom-header .container nav .category-map {
+  width: 220px;
+  height: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+.bottom-header .container nav ul.category-nav-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--white-color);
+  border: 1px solid #999;
+  border-top: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow: auto;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: var(--main-transition) ease-in-out;
+}
+.bottom-header .container nav ul.category-nav-list.active {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.bottom-header .container nav ul.category-nav-list li {
+  border-bottom: 1px solid var(--border-color);
+}
+.bottom-header .container nav ul.category-nav-list li a {
+  display: block;
+  padding: 14px 10px;
+  font-size: 14px;
+}
+.bottom-header .container nav ul.category-nav-list li a:last-child {
+  border-bottom: 0;
+}
+.bottom-header .container nav .category-map .category-button {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--main-color);
+  padding: 0 15px;
+  cursor: pointer;
+}
+.bottom-header .container nav .category-map .category-button svg {
+  color: var(--white-color);
+}
+.bottom-header .container nav .category-map .category-button p {
+  color: var(--white-color);
+  font-size: 15px;
+  font-weight: 600;
+}
+.bottom-header nav .nav-links {
+  display: flex;
+  height: 100%;
+}
+.bottom-header nav .nav-links li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+  transition: var(--main-transition);
+}
+.bottom-header nav .nav-links li.active {
+  background: #0079ca;
+}
+.bottom-header nav .nav-links li a {
+  color: var(--white-color);
+}
+.bottom-header .header-icons {
+  display: flex;
+  gap: 20px;
+}
+.bottom-header .header-icons svg {
+  font-size: 22px;
+  fill: var(--white-color);
+}
+
+/* Start Loading */
+li.loading-li p {
+  margin: 7px 10px;
+  width: calc(100% - 20px);
+  height: 32px;
+}
+/* End Loading */
