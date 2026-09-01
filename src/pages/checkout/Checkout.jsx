@@ -164,6 +164,7 @@ function Checkout() {
               type="button"
               disabled={isCheckoutLoading}
               onClick={handleGoToBillingSubmit}
+              className="billing-btn"
             >
               {isCheckoutLoading ? <Spinner size={20} /> : "Go To Billing"}
             </button>
@@ -172,6 +173,7 @@ function Checkout() {
               type="button"
               disabled={isCashOrderLoading}
               onClick={handleCreateCashOrderSubmit}
+              className="billing-btn"
             >
               {isCashOrderLoading ? <Spinner size={20} /> : "Cash Order"}
             </button>
