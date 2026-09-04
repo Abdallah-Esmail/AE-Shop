@@ -14,7 +14,7 @@ import { handleApiError } from "../../utils/handleApiError";
 import { handleApiSuccess } from "../../utils/handleApiSuccess";
 import Spinner from "../spinner/Spinner";
 function Product({ _id, title, quantity, price, imageCover, ratingsAverage }) {
-  const { isAuth } = useSelector((state) => state.auth.isAuth);
+  const { isAuth } = useSelector((state) => state.auth);
   const { data: cart } = useGetMyCartQuery(undefined, { skip: !isAuth });
   const { data: wishlist } = useGetMyWishlistQuery(undefined, {
     skip: !isAuth,
