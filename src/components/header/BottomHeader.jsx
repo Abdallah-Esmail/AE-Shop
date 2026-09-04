@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import NavCategories from "./NavCategories";
+import NavCategoriesLoading from "./NavCategoriesLoading";
 
 import { logout } from "../../features/auth/authSlice";
 
@@ -14,6 +14,7 @@ import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
 import { useGetCategoriesQuery } from "../../api/categoriesApi";
 import { handleApiSuccess } from "../../utils/handleApiSuccess";
+import SearchBox from "./SearchBox";
 
 const navLinks = [
   { key: 0, title: "Home", link: "/" },
@@ -46,25 +47,24 @@ export default function BottomHeader() {
   }, [location]);
 
   return (
-    <div className="bottom-header">
-      <div className="container">
-        <nav>
-          <div className="category-map" ref={dropdownRef}>
-            <div
-              className="category-button"
-              onClick={() => {
-                setOpenCategories(!openCategories);
-              }}
-            >
-              <IoMenu />
-              <p>Browse Category</p>
-              <IoMdArrowDropdown />
-            </div>
-            <ul
-              className={`category-nav-list ${openCategories ? "active" : ""}`}
-            >
+    <div className="container">
+      <SearchBox />
+      <nav>
+        <div className="category-map" ref={dropdownRef}>
+          <div
+            className="category-button"
+            onClick={() => {
+              setOpenCategories(!openCategories);
+            }}
+          >
+            <IoMenu />
+            <p>Browse Category</p>
+            <IoMdArrowDropdown />
+          </div>
+          {openCategories ? (
+            <ul className="category-nav-list">
               {isLoading ? (
-                <NavCategories />
+                <NavCategoriesLoading />
               ) : (
                 categories.map((category) => (
                   <li key={category?._id}>
@@ -79,38 +79,40 @@ export default function BottomHeader() {
                 ))
               )}
             </ul>
-          </div>
-          <ul className="nav-links">
-            {navLinks.map((link) => (
-              <li
-                key={link.key}
-                className={location.pathname === link.link ? "active" : ""}
-              >
-                <Link to={link.link}>{link.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="header-icons">
-          {isAuth ? (
-            <FaSignOutAlt
-              onClick={() => {
-                navigate("/", { replace: true });
-                dispatch(logout());
-                handleApiSuccess("Logged out successfully");
-              }}
-            />
           ) : (
-            <>
-              <Link to={"/signup"}>
-                <FaUserPlus />
-              </Link>
-              <Link to={"/login"}>
-                <FaSignInAlt />
-              </Link>
-            </>
+            ""
           )}
         </div>
+        <ul className="nav-links">
+          {navLinks.map((link) => (
+            <li
+              key={link.key}
+              className={location.pathname === link.link ? "active" : ""}
+            >
+              <Link to={link.link}>{link.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div className="header-icons">
+        {isAuth ? (
+          <FaSignOutAlt
+            onClick={() => {
+              navigate("/", { replace: true });
+              dispatch(logout());
+              handleApiSuccess("Logged out successfully");
+            }}
+          />
+        ) : (
+          <>
+            <Link to={"/signup"}>
+              <FaUserPlus />
+            </Link>
+            <Link to={"/login"}>
+              <FaSignInAlt />
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

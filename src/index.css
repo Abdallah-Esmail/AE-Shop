@@ -24,6 +24,12 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+@media (max-width: 991px) {
+  body {
+    padding-top: 80px;
+  }
+}
+
 img {
   width: 100%;
 }
@@ -64,6 +70,7 @@ ul {
 }
 
 .container {
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -71,6 +78,8 @@ ul {
 }
 
 /* Start Media */
+
+/* Containers */
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -86,6 +95,20 @@ ul {
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
+  }
+}
+
+/* Root Font Size */
+
+@media (max-width: 991px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 80%;
   }
 }
 

@@ -1,5 +1,4 @@
 import TopHeader from "./components/header/TopHeader";
-import BottomHeader from "./components/header/BottomHeader";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
@@ -36,10 +35,7 @@ function App() {
   }, [isSuccess, data]);
   return (
     <>
-      <header>
-        <TopHeader />
-        <BottomHeader />
-      </header>
+      <TopHeader />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />}></Route>
