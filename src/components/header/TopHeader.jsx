@@ -1,6 +1,6 @@
 import "./header.css";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "/logo.png";
 import { useGetMyCartQuery } from "../../api/cartApi";
 import { useSelector } from "react-redux";
@@ -12,8 +12,8 @@ import { useGetMyWishlistQuery } from "../../api/wishlistApi";
 import { LuInbox } from "react-icons/lu";
 import SearchBox from "./SearchBox";
 import { BiMenu } from "react-icons/bi";
-import BottomHeader from "./BottomHeader";
 import { IoClose } from "react-icons/io5";
+import HeaderNav from "./HeaderNav";
 export default function TopHeader() {
   const { isAuth } = useSelector((state) => state.auth);
   const { data: cartData, isLoading: isCartLoading } = useGetMyCartQuery(
@@ -33,18 +33,17 @@ export default function TopHeader() {
 
   // Toggle menu
   const [navActive, setNavActive] = useState(false);
-
+  const navRef = useRef(null);
+  const location = useLocation();
   const toggleNav = () => {
     setNavActive(!navActive);
   };
 
-  const closeMenu = () => {
-    setNavActive(false);
-  };
+  // Close on resize above breakpoint
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 500) {
-        closeMenu;
+      if (window.innerWidth > 991) {
+        setNavActive(false);
       }
     };
     window.addEventListener("resize", handleResize);
@@ -54,11 +53,28 @@ export default function TopHeader() {
     };
   }, []);
 
+  // Close when clicking outside the nav
   useEffect(() => {
-    if (window.innerWidth <= 1200) {
-      closeMenu;
-    }
-  }, []);
+    if (!navActive) return;
+
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setNavActive(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [navActive]);
+
+  // Close on route change
+  useEffect(() => {
+    setNavActive(false);
+  }, [location.pathname]);
+
   return (
     <header>
       <div className="top-header">
@@ -94,8 +110,8 @@ export default function TopHeader() {
           </div>
         </div>
       </div>
-      <div className={`header-nav ${navActive ? "active" : ""}`}>
-        <BottomHeader />
+      <div ref={navRef} className={`header-nav ${navActive ? "active" : ""}`}>
+        <HeaderNav />
       </div>
     </header>
   );

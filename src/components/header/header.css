@@ -29,54 +29,6 @@ header {
   width: 10rem;
 }
 
-.search-box {
-  width: 31.25rem;
-  display: flex;
-  align-items: center;
-  border-radius: 30px;
-  border: 1px solid var(--main-color);
-}
-.header-nav .search-box {
-  display: none;
-}
-@media (max-width: 991px) {
-  .top-header .search-box {
-    display: none;
-  }
-  .header-nav .search-box {
-    display: flex;
-    border: 2px solid var(--border-color);
-    width: 100%;
-  }
-  .header-nav .search-box input {
-    flex: 1;
-  }
-}
-@media (max-width: 1199px) {
-  .top-header .search-box {
-    width: 25rem;
-  }
-}
-.search-box input {
-  height: 45px;
-  width: 440px;
-  background: var(--bg-color);
-  padding: 5px 15px 5px 20px;
-  border-radius: 30px 0 0 30px;
-}
-.search-box button {
-  height: 45px;
-  width: 60px;
-  background: var(--main-color);
-  font-size: 15px;
-  cursor: pointer;
-  border-radius: 0 30px 30px 0;
-}
-
-.top-header .search-box button svg {
-  fill: var(--white-color);
-}
-
 .top-header .header-icons {
   display: flex;
   justify-content: center;
@@ -88,7 +40,7 @@ header {
 }
 .top-header .header-icons svg {
   position: relative;
-  font-size: 40px;
+  font-size: 2.6rem;
   padding: 5px;
 }
 .top-header .header-icons .count {
@@ -124,16 +76,19 @@ header {
   position: relative;
   bottom: 0;
   right: 0;
-  transition: var(--main-transition) ease-in-out;
 }
 .header-nav.active {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   bottom: 0;
 }
 @media (max-width: 991px) {
   .header-nav {
     opacity: 0;
-    bottom: -5px;
+    visibility: hidden;
+    pointer-events: none;
+    bottom: -10px;
   }
 }
 .header-nav .container {
@@ -167,7 +122,7 @@ header {
 }
 .header-nav .container nav ul.category-nav-list li {
   border-bottom: 1px solid var(--border-color);
-  transition: var(--main-transition);
+  transition: background-color var(--main-transition) ease;
 }
 .header-nav .container nav ul.category-nav-list li a {
   display: block;
@@ -202,11 +157,7 @@ header {
   height: 100%;
 }
 .header-nav nav .nav-links li {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 25px;
-  transition: var(--main-transition);
+  transition: background-color var(--main-transition) ease;
 }
 .header-nav nav .nav-links li.active {
   background: #0079ca;
@@ -216,6 +167,10 @@ header {
 }
 .header-nav nav .nav-links li a {
   color: var(--white-color);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 25px;
 }
 .header-nav .header-icons {
   display: flex;
@@ -243,10 +198,10 @@ li.loading-li p {
     height: fit-content;
     max-height: calc(100vh - 74px);
     top: 100%;
-    right: 50%;
-    transform: translateX(50%);
+    right: 0;
     border-radius: 12px;
     overflow-y: scroll;
+    transition: var(--main-transition) ease-in-out;
   }
   .header-nav::-webkit-scrollbar {
     width: 6px;
@@ -268,7 +223,7 @@ li.loading-li p {
   .header-nav .container {
     flex-direction: column;
     align-items: normal;
-    gap: 20px;
+    gap: 0px;
     padding: 15px;
   }
   .header-nav .container nav {
@@ -318,17 +273,62 @@ li.loading-li p {
     color: white;
     font-weight: normal;
   }
-  .header-nav .header-icons a,
-  .header-nav .header-icons button {
-    pointer-events: none;
-  }
   .header-nav .header-icons {
     padding: 0 15px;
   }
-  .header-nav.active .header-icons a,
-  .header-nav.active .header-icons button {
-    pointer-events: all;
-  }
 }
 
-/* End Loading */
+/* Start Search Box */
+
+.search-box {
+  width: 31.25rem;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid var(--main-color);
+}
+.header-nav .search-box {
+  display: none;
+}
+@media (max-width: 991px) {
+  .top-header .search-box {
+    display: none;
+  }
+  .header-nav .search-box {
+    display: flex;
+    border: 2px solid var(--border-color);
+    width: 100%;
+  }
+  .header-nav .search-box input {
+    flex: 1;
+    width: 100%;
+  }
+}
+@media (max-width: 1199px) {
+  .top-header .search-box {
+    width: 25rem;
+  }
+}
+.search-box input {
+  height: 45px;
+  width: 440px;
+  max-width: 100%;
+  background: var(--bg-color);
+  padding: 5px 15px 5px 20px;
+  border-radius: 30px 0 0 30px;
+}
+.search-box button {
+  height: 45px;
+  width: 60px;
+  background: var(--main-color);
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 0 30px 30px 0;
+}
+
+.top-header .search-box button svg {
+  fill: var(--white-color);
+}
+
+/* End Search Box */

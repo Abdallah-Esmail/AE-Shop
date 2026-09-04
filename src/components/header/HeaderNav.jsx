@@ -23,7 +23,7 @@ const navLinks = [
   { key: 3, title: "Contact", link: "/contact" },
 ];
 
-export default function BottomHeader() {
+export default function HeaderNav() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
