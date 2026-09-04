@@ -33,7 +33,7 @@ function HeroSlider({ choosenCategories }) {
                     <div className="content">
                       <h4>Discover Our New Collection</h4>
                       <h3>{category?.name}</h3>
-                      <p>Upgrade your lifestyle with our premium selection.</p>
+                      <p>Upgrade your lifestyle with our premium</p>
                       <Link
                         to={`/categories/${category?.slug}`}
                         className="btn"
