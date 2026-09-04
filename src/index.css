@@ -112,6 +112,12 @@ ul {
   }
 }
 
+@media (max-width: 576px) {
+  html {
+    font-size: 70%;
+  }
+}
+
 /* End Media */
 /* End Global Rules */
 

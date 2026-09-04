@@ -223,7 +223,7 @@ li.loading-li p {
   .header-nav .container {
     flex-direction: column;
     align-items: normal;
-    gap: 0px;
+    gap: 0.8rem;
     padding: 15px;
   }
   .header-nav .container nav {
