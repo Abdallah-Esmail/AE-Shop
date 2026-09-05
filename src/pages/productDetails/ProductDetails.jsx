@@ -88,7 +88,6 @@ function ProductDetails() {
       }
     }
   };
-
   return (
     <PageTransition key={id}>
       <div>
@@ -154,7 +153,7 @@ function ProductDetails() {
               )}
               <button className="btn" onClick={handleAddToCart}>
                 Add to cart
-                {isCartLoading ? <p>Loading...</p> : <TiShoppingCart />}
+                {isCartLoading ? <Spinner size={22} /> : <TiShoppingCart />}
               </button>
               <div className="icons">
                 <span
