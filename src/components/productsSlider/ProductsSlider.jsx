@@ -32,10 +32,6 @@ function ProductsSlider({ category, currentProductId }) {
         <div className="container">
           <div className="top-slide">
             <h2>{category?.name}</h2>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam,
-              perspiciatis.
-            </p>
           </div>
           <Swiper
             loop={true}
