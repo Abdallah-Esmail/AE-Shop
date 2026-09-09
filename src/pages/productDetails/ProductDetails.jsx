@@ -100,24 +100,28 @@ function ProductDetails() {
                   alt={product.title}
                 />
               </div>
-              <div className="small-img">
-                <img
-                  src={product.imageCover}
-                  alt={`${product.title} 0`}
-                  onClick={() => {
-                    setSelectedImg(product.imageCover);
-                  }}
-                />
+              <div className="small-imgs">
+                <div className="small-img">
+                  <img
+                    src={product.imageCover}
+                    alt={`${product.title} 0`}
+                    onClick={() => {
+                      setSelectedImg(product.imageCover);
+                    }}
+                  />
+                </div>
                 {product.images?.map((img, index) => {
                   return (
-                    <img
-                      key={index + 1}
-                      src={img}
-                      alt={`${product.title} ${index + 1}`}
-                      onClick={() => {
-                        setSelectedImg(img);
-                      }}
-                    />
+                    <div className="small-img">
+                      <img
+                        key={index + 1}
+                        src={img}
+                        alt={`${product.title} ${index + 1}`}
+                        onClick={() => {
+                          setSelectedImg(img);
+                        }}
+                      />
+                    </div>
                   );
                 })}
               </div>
