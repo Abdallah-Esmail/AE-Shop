@@ -4,6 +4,13 @@ AE-Shop is a modern, fast, and fully responsive E-Commerce web application front
 
 ---
 
+## 📑 API Documentation & Live Links
+- 🦄 **Swagger API Docs:** https://app.swaggerhub.com/apis-docs/abdallah-687/ae-shop/1.0.0?view=uiDocs
+- 🌐 **Live Web Application:** [https://ae-shop.vercel.app/](https://ae-shop.vercel.app/)
+- 🐙 **GitHub Repository:** [abdallah-esmail/AE-Shop](https://github.com/abdallah-esmail/AE-Shop)
+
+---
+
 ## 🚀 Key Features
 
 - 🔐 **Authentication:** User registration, JWT login, and protected routes.
